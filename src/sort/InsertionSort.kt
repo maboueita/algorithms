@@ -22,7 +22,7 @@ class InsertionSort {
     }
 
     @Test
-    fun `sorting works as expected when n = 10, 50, 100, 1000`() {
+    fun `sorting works as expected when n = 10, 50, 100 and 1000`() {
 
         val sorted10 = List(10) { i -> i + 1 }
         val shuffled10 = listOf(3, 1, 5, 9, 10, 4, 6, 2, 8, 7)
