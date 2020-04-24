@@ -10,7 +10,9 @@ class BinarySearch {
         var min = 0
         var max = numbers.size - 1
         while (min <= max) {
-            val mid = (min + max) / 2
+            /** We calculate the midrange this way, as [min + max / 2] would cause an overflow
+             *  for sufficiently large arrays (i.e: size 2^30 or larger).*/
+            val mid = min + (max - min / 2)
             when {
                 numbers[mid] == target -> {
                     return mid
@@ -29,7 +31,7 @@ class BinarySearch {
     @Test
     fun `binary search finds correct index of a target when found or -1 otherwise`() {
 
-        
+
         val numbersList = listOf(
             63, 65, 67, 69, 71, 73, 75,
             79, 81, 83, 85, 87, 89,
@@ -49,12 +51,11 @@ class BinarySearch {
         val indexOf81 = binarySearch(numbersList, 81)
         assertThat(indexOf81, equalTo(8))
 
-        //Non-existing targets
+        // Non-existing targets
         val indexOf0 = binarySearch(numbersList, 0)
         assertThat(indexOf0, equalTo(-1))
 
         val indexOf120 = binarySearch(numbersList, 120)
         assertThat(indexOf120, equalTo(-1))
-
-    }
+   }
 }
